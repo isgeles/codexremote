@@ -1,0 +1,16 @@
+.remote
+__pycache__/
+*.pyc
+.venv/
+.venv-shared/
+.shared/
+test-results/
+dist/
+build/
+*.egg-info/
+.pytest_cache/
+.coverage
+.DS_Store
+.env
+.env.*
+uv.lock

@@ -1,0 +1,21 @@
+# Copy to ~/.config/systemd/user/codex-remote.service after editing paths.
+# Stop an existing background instance with codexremote stop first.
+# Enable with: systemctl --user enable --now codex-remote
+# User services stop at logout unless user lingering is enabled by your system.
+[Unit]
+Description=Codex Remote web client
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/projects
+ExecStart=%h/.local/bin/codexremote --foreground --root %h/projects
+Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+Restart=on-failure
+RestartSec=5
+KillMode=control-group
+TimeoutStopSec=15
+UMask=0077
+
+[Install]
+WantedBy=default.target

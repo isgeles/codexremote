@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#212121"><meta name="apple-mobile-web-app-capable" content="yes">
+  <title>Codex Remote</title><link rel="icon" href="/icon.svg"><link rel="manifest" href="/manifest.webmanifest"><link rel="stylesheet" href="/vendor/katex/katex.min.css"><link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div id="login" class="login-screen">
+    <form id="login-form" class="login-card">
+      <img src="/icon.svg" width="54" height="54" alt=""><span class="eyebrow">YOUR MACHINE. ANYWHERE.</span>
+      <h1>Welcome to<br>Codex Remote<span class="accent">.</span></h1>
+      <p>Your projects and conversations, a little closer.</p>
+      <label for="token">Machine access token</label><input id="token" type="password" autocomplete="current-password" required placeholder="Paste your access token">
+      <button class="primary" type="submit">Connect to your machine <span>↗</span></button>
+      <p id="login-error" class="error" role="alert"></p><small>Run <code>codexremote status</code> in a terminal<br>on the machine to see your access token.</small>
+    </form>
+  </div>
+  <div id="app" class="app hidden">
+    <button id="scrim" class="scrim hidden" aria-label="Close sidebar"></button>
+    <aside id="sidebar" class="sidebar">
+      <a class="brand" href="/"><img src="/icon.svg" alt="" width="31" height="31"><strong>Codex <span>Remote</span></strong></a>
+      <button id="new-chat" class="new-chat">＋ <span>New conversation</span><kbd>N</kbd></button>
+      <label class="search"><span>⌕</span><input id="search" placeholder="Search conversations" aria-label="Search conversations"></label>
+      <div class="section-label">CONVERSATIONS <button id="archive-filter" title="Show archived conversations">Archived</button></div>
+      <nav id="threads" class="threads" aria-label="Conversations"></nav><button id="more-threads" class="quiet hidden">Load more</button>
+      <div class="sidebar-footer"><div class="machine"><span id="connection-dot" class="dot"></span><div><strong id="machine-name">Your machine</strong><small id="connection-text">Connecting…</small></div><button id="settings-open" class="icon-button" aria-label="Settings">⚙</button></div></div>
+    </aside>
+    <main>
+      <header class="topbar"><button id="menu" class="icon-button mobile" aria-label="Open conversations">☰</button><div class="thread-heading"><strong id="thread-title">New conversation</strong><span id="thread-path">Choose a project and start something.</span></div><button id="files-open" class="quiet">▱ <span>Files</span></button><button id="thread-menu" class="icon-button" aria-label="Conversation actions">•••</button></header>
+      <div id="banner" class="banner hidden" role="status"></div>
+      <div id="messages" class="messages" role="log" aria-label="Conversation">
+        <section id="welcome" class="welcome"><div class="welcome-mark">⌘</div><span class="eyebrow">A LITTLE DISTANCE. NO LIMITS.</span><h1>Pick up where<br>you left off<span class="accent">.</span></h1><p>Build, explore, and get things done.<br>Codex works on your machine. You work from anywhere.</p><div class="suggestions"><button data-prompt="Explore this project and explain how it is organized."><span>⌘</span><strong>Explore a project</strong><small>Find your way around the code</small><b>↗</b></button><button data-prompt="Review the current changes for bugs and suggest improvements."><span>✓</span><strong>Review changes</strong><small>Get a fresh pair of eyes</small><b>↗</b></button><button data-prompt="Help me plan a new feature for this project. Ask me what I want to build."><span>✧</span><strong>Build something</strong><small>Turn an idea into a next step</small><b>↗</b></button></div></section>
+      </div>
+      <div id="requests" class="requests" aria-live="polite"></div>
+      <div class="composer-area"><div id="attachments" class="attachments"></div><form id="composer" class="composer"><div id="slash-menu" class="slash-menu hidden" role="listbox" aria-label="Slash commands"></div><textarea id="prompt" rows="2" placeholder="Ask Codex anything, or type / for commands…" aria-label="Message Codex" aria-autocomplete="list" aria-controls="slash-menu" aria-expanded="false"></textarea><div class="composer-toolbar"><div class="composer-tools"><button type="button" id="attach" class="icon-button" title="Attach files or images" aria-label="Attach files or images">＋</button><button type="button" id="project-button" class="project-button" title="Choose working folder">▱ <span id="project-name">Project</span></button><select id="mode" aria-label="Collaboration mode"><option value="default">Code</option><option value="plan">Plan</option></select></div><div class="send-tools"><button type="button" id="stop" class="stop hidden" title="Stop Codex">■ Stop</button><button id="send" class="send" type="submit" aria-label="Send message">↑</button></div></div></form><div class="composer-meta"><button id="model-button">Codex defaults <span>⌄</span></button><span id="turn-status">Runs on your machine</span></div><input id="file-input" class="hidden" type="file" multiple></div>
+    </main>
+  </div>
+  <dialog id="panel"><div class="panel-header"><h2 id="panel-title"></h2><button id="panel-close" class="icon-button" aria-label="Close dialog">×</button></div><div id="panel-content"></div></dialog>
+  <div id="toast" class="toast hidden" role="alert"></div>
+  <script src="/vendor/markdown-it/markdown-it.min.js"></script>
+  <script src="/vendor/katex/katex.min.js"></script>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

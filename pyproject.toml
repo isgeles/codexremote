@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "codexremote"
+version = "0.2.0"
+description = "Run Codex on your machine, use it from any browser."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+keywords = ["codex", "remote", "web", "cli", "self-hosted"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Operating System :: POSIX :: Linux",
+  "Operating System :: MacOS",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Topic :: Software Development",
+]
+dependencies = ["websockets>=15,<18"]
+
+[project.optional-dependencies]
+shared = []
+
+[project.scripts]
+codexremote = "codexremote.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/isgeles/codexremote"
+Repository = "https://github.com/isgeles/codexremote"
+Issues = "https://github.com/isgeles/codexremote/issues"
+
+[tool.setuptools]
+packages = ["codexremote"]
+include-package-data = false
+
+[tool.setuptools.package-data]
+codexremote = ["web/*.html", "web/*.css", "web/*.js", "web/*.svg", "web/*.webmanifest", "web/vendor/*/*.js", "web/vendor/*/*.css", "web/vendor/*/LICENSE", "web/vendor/*/fonts/*"]

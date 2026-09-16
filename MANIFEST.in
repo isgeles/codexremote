@@ -1,0 +1,9 @@
+include LICENSE THIRD_PARTY_NOTICES.md README.md pyproject.toml
+recursive-include codexremote/web *.html *.css *.js *.svg *.webmanifest *.woff *.woff2 *.ttf LICENSE
+recursive-include tests *.py
+recursive-include deploy *.example
+recursive-include docs *.md
+global-exclude *.pyc
+prune .remote
+prune test-results
+recursive-include scripts *.py
